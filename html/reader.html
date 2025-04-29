@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/reader.css">
+        <title>Soramame</title>
+    </head>
+    <body>
+        <header>
+            <p><a href="/html/top.html">Soramame - 模試受付システム</a></p>
+        </header>
+        <div class="main">
+            <div id="camera-wrapper">
+                <video id="video" autoplay muted playsinline></video>
+                <canvas id="camera-canvas"></canvas>
+                <canvas id="rect-canvas"></canvas>
+                <p><span id="qr-msg">QRコード: 見つかりません</span></p>
+                <p><span id="data-msg">座席データ：未登録</span></p>
+            </div>
+            <div id="result-wrapper">
+                <p><span id="result-number">生徒番号：</span></p>
+                <p><span id="result-name">氏名：</span></p>
+                <p><span id="result-room">試験教室：</span></p>
+                <p><span id="result-sheet">座席番号：</span></p>
+                <p><button onclick="qrLocked = false" id="next-btn">受付を完了する</button></p>
+                <p id="dl-btn"><button onclick="exportCSV()">受付済みデータをダウンロードする</button></p>
+                <p id="clear-btn"><button onclick="clearAcceptedStudents()">保存データをリセット</button></p>
+            </div>
+            <script src="/js/jsQR.js"></script>
+            <script src="/js/script.js"></script>
+        </div>
+        <footer>
+            <p>Soramame</p>
+            <p>&copy;2024-2025 <a href="https://tsusu0409.com">Tsubasa KAWAGISHI</a> All rights reserved.</p>
+        </footer>
+    </body>
+</html>
