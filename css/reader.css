@@ -1,0 +1,113 @@
+/* 共通部分はじめ */
+header {
+    background-color: #009380;
+    color: white;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+header.p {
+    color: white;
+}
+
+footer {
+    background-color: #009380;
+    color: white;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+a, a:visited, a:hover{
+    color: inherit;
+    text-decoration: none;
+}
+
+/* 共通部分おわり */
+
+.main{
+    height: 600px;
+    display: flex;
+}
+
+#camera-wrapper{
+    position: relative;
+    height: 90%;
+    width:40%;
+}
+
+#video{
+    position: absolute;
+    top: 100px;
+    left: 50px;
+}
+
+#camera-canvas{
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    z-index: 50;
+}
+
+#qr-msg{
+    position: absolute;
+    left: 50px;
+}
+
+#data-msg{
+    position: absolute;
+    left: 50px;
+    top: 50px;
+}
+
+#rect-canvas{
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    z-index: 100;
+}
+
+#result-wrapper {
+    height: 480px;
+    width: 60%;
+    height: 90%;
+}
+
+#next-btn {
+    position: relative;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+
+    font-size: 24px;
+    background-color: #009380;
+    color: white;
+    box-shadow: 0 6px #015e51;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#dl-button {
+    position: relative;
+    margin-top: 300px;
+    text-align: center;
+}
+
+#dl-button button {
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+}
+
+#dl-button button:hover {
+    background-color: #eee;
+}
