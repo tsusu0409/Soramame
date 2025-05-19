@@ -28,27 +28,42 @@ const canvasUpdate = () => {
    requestAnimationFrame(canvasUpdate);
 }
 
-function csv2Array(filePath) { //csvﾌｧｲﾙﾉ相対ﾊﾟｽor絶対ﾊﾟｽ
-	var csvData = new Array();
-	var data = new XMLHttpRequest();	
-	data.open("GET", filePath, false); //true:非同期,false:同期
-	data.send(null);
+document.getElementById('csvFileInput').addEventListener('change', function (e) {
+  const file = e.target.files[0];
+  if (!file) return;
 
-	var LF = String.fromCharCode(10); //改行ｺｰﾄﾞ
-	var lines = data.responseText.split(LF);
+  const reader = new FileReader();
 
-   // 1行目をラベル（キー）として取得
-   var headers = lines[0].split(",");
+  reader.onload = function (event) {
+    const text = event.target.result;
+    const csvData = parseCSV(text);
+    localStorage.setItem('csvData', JSON.stringify(csvData));
+    console.log('保存されたデータ:', csvData);
+  };
 
-   // 2行目からの処理
-	for (var i = 1; i < lines.length;++i) {
-		var cells = lines[i].split(",");
-		if( cells.length != 1 ) {
-			csvData.push(cells);
-		}
-	}
-	return csvData;
+  reader.readAsText(file);
+});
+
+function parseCSV(text) {
+  const lines = text.split(/\r?\n/).filter(line => line.trim() !== "");
+  const headers = lines[0].split(",");
+  const data = [];
+
+  for (let i = 1; i < lines.length; i++) {
+    const cells = lines[i].split(",");
+    if (cells.length === headers.length) {
+      data.push(cells);
+    }
+  }
+
+  return data;
 }
+
+function getCSVFromLocalStorage() {
+  const data = localStorage.getItem('csvData');
+  return data ? JSON.parse(data) : [];
+}
+
 
 
 // CSVファイルを相対パスで読み込む
