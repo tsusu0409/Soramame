@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useCallback } from 'react';
 import jsQR from 'jsqr'; // 値のインポート
 import type { QRCode } from 'jsqr'; // 型のインポート
 import './CheckIn.css'; // 作成したCSSファイルをインポート
-import Footer from './components/Footer';
 
 // --- 型定義 ---
 interface StudentData {
@@ -255,69 +254,70 @@ const CheckIn: React.FC = () => {
   };
 
   return (
-    <div className="checkin-container">
-        <h1>Soramame - 模試受付システム</h1>
+    <div>
+      <div className="checkin-container">
+          <h1>Soramame - 模試受付システム</h1>
 
-        <div className="main-content">
-        {/* --- 上段エリア（カメラとスキャン結果） --- */}
-        <div className="top-row">
-            <div className="camera-container">
-            <video
-                ref={videoRef}
-                id="video"
-                autoPlay
-                playsInline
-                muted
-                style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '1px',
-                height: '1px',
-                opacity: 0,
-                zIndex: -1,
-                }}
-            ></video>
-            <canvas ref={cameraCanvasRef} id="camera-canvas"></canvas>
-            <canvas ref={rectCanvasRef} id="rect-canvas"></canvas>
-            </div>
+          <div className="main-content">
+          {/* --- 上段エリア（カメラとスキャン結果） --- */}
+          <div className="top-row">
+              <div className="camera-container">
+              <video
+                  ref={videoRef}
+                  id="video"
+                  autoPlay
+                  playsInline
+                  muted
+                  style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '1px',
+                  height: '1px',
+                  opacity: 0,
+                  zIndex: -1,
+                  }}
+              ></video>
+              <canvas ref={cameraCanvasRef} id="camera-canvas"></canvas>
+              <canvas ref={rectCanvasRef} id="rect-canvas"></canvas>
+              </div>
 
-            <div className="card card-result">
-            <h2>スキャン結果</h2>
-            <p ref={qrMsgRef} id="qr-msg">QRコード: 見つかりません</p>
-            <div id="result">
-                <p ref={resultNumberRef} id="result-number">生徒番号：</p>
-                <p ref={resultNameRef} id="result-name">氏名：</p>
-                <p ref={resultRoomRef} id="result-room">試験教室：</p>
-                <p ref={resultSheetRef} id="result-sheet">座席番号：</p>
-            </div>
-            <button id="next-btn" onClick={handleNextClick}>次の生徒をスキャン</button>
-            </div>
-        </div>
+              <div className="card card-result">
+              <h2>スキャン結果</h2>
+              <p ref={qrMsgRef} id="qr-msg">QRコード: 見つかりません</p>
+              <div id="result">
+                  <p ref={resultNumberRef} id="result-number">生徒番号：</p>
+                  <p ref={resultNameRef} id="result-name">氏名：</p>
+                  <p ref={resultRoomRef} id="result-room">試験教室：</p>
+                  <p ref={resultSheetRef} id="result-sheet">座席番号：</p>
+              </div>
+              <button id="next-btn" onClick={handleNextClick}>次の生徒をスキャン</button>
+              </div>
+          </div>
 
 
-        {/* --- ▼ 下段エリア（設定）▼ --- */}
-        <div className="setting-section">
-            <h2>設定</h2>
-            <div className="bottom-row">
-            <div className="card">
-                <h2>データ読み込み</h2>
-                <input type="file" ref={csvFileInputRef} id="csvFileInput" accept=".csv" />
-                <p ref={dataMsgRef} id="data-msg">座席データを読み込んでください。</p>
-            </div>
+          {/* --- ▼ 下段エリア（設定）▼ --- */}
+          <div className="setting-section">
+              <h2>設定</h2>
+              <div className="bottom-row">
+              <div className="card">
+                  <h2>データ読み込み</h2>
+                  <input type="file" ref={csvFileInputRef} id="csvFileInput" accept=".csv" />
+                  <p ref={dataMsgRef} id="data-msg">座席データを読み込んでください。</p>
+              </div>
 
-            <div className="card">
-                <h2>データ管理</h2>
-                <div className="data-management-buttons">
-                <button id="export-btn" onClick={exportCSV}>データをCSVで保存</button>
-                <button id="clear-btn" onClick={clearAcceptedStudents}>データをクリア</button>
-                </div>
-            </div>
-            </div>
-        </div>
-        {/* --- ▲ 下段エリア（設定）▲ --- */}
-        </div>
-    <Footer />
+              <div className="card">
+                  <h2>データ管理</h2>
+                  <div className="data-management-buttons">
+                  <button id="export-btn" onClick={exportCSV}>データをCSVで保存</button>
+                  <button id="clear-btn" onClick={clearAcceptedStudents}>データをクリア</button>
+                  </div>
+              </div>
+              </div>
+          </div>
+          {/* --- ▲ 下段エリア（設定）▲ --- */}
+          </div>
+      </div>
     </div>
     );
 };
