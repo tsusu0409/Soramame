@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useCallback } from 'react';
 import jsQR from 'jsqr'; // 値のインポート
 import type { QRCode } from 'jsqr'; // 型のインポート
 import './CheckIn.css'; // 作成したCSSファイルをインポート
+import Footer from './components/Footer';
 
 // --- 型定義 ---
 interface StudentData {
@@ -316,6 +317,7 @@ const CheckIn: React.FC = () => {
         </div>
         {/* --- ▲ 下段エリア（設定）▲ --- */}
         </div>
+    <Footer />
     </div>
     );
 };

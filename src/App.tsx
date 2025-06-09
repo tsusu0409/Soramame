@@ -1,15 +1,14 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Footer from './components/Footer';
 import CheckIn from './CheckIn';
 
 function App() {
   return (
-    <div>
-      <main>
-        <CheckIn />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <Routes>
+        <Route path="/" element={<CheckIn />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
