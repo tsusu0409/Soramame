@@ -309,8 +309,8 @@ const CheckIn: React.FC = () => {
               <div className="card">
                   <h2>データ管理</h2>
                   <div className="data-management-buttons">
-                  <button id="export-btn" onClick={exportCSV}>データをCSVで保存</button>
-                  <button id="clear-btn" onClick={clearAcceptedStudents}>データをクリア</button>
+                  <button id="export-btn" onClick={exportCSV}>受付済みデータを保存</button>
+                  <button id="clear-btn" onClick={clearAcceptedStudents}>記録をクリア</button>
                   </div>
               </div>
               </div>
