@@ -1,0 +1,169 @@
+/* --- Global Styles --- */
+body {
+  background-color: #f0f2f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 2rem 1rem;
+}
+
+/* --- Main Container --- */
+.checkin-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+h1, h2 {
+  color: #1c1e21;
+  margin-top: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #009380;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.25rem;
+  border-bottom: 2px solid #e4e6e8;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* --- Card Style for Sections --- */
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- New Layout Containers --- */
+.main-content {
+  display: flex;
+  flex-direction: column; /* 全体を縦に並べる */
+}
+
+.top-row {
+  display: flex;
+  gap: 2rem; /* カメラと結果カードの間の余白 */
+  align-items: flex-start;
+}
+
+.setting-section {
+  margin-top: 12rem; /* 上段エリアとのマージンを明確に設定 */
+}
+
+.bottom-row {
+  display: grid; /* グリッドレイアウトに変更 */
+  grid-template-columns: 1fr 1fr; /* 2つのカードを均等に配置 */
+  gap: 1.5rem;
+}
+
+
+/* --- Camera Display --- */
+.camera-container {
+  position: relative;
+  width: 480px;
+  flex-shrink: 0; /* カメラコンテナが縮まないようにする */
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #000;
+}
+
+.camera-container canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#rect-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* --- Result Card Specific Style --- */
+.card-result {
+  flex: 1; /* 横方向の残りのスペースをすべて使う */
+}
+
+
+/* --- Buttons --- */
+button {
+  background-color: #009380;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease;
+  width: 100%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #007a69;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.data-management-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- Input --- */
+input[type="file"] {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+input[type="file"]::file-selector-button {
+  background-color: #e4e6e8;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+input[type="file"]::file-selector-button:hover {
+  background-color: #d1d3d6;
+}
+
+/* --- Result Text --- */
+#result p {
+  background-color: #f0f2f5;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin: 0.5rem 0;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+#result p:first-child {
+  margin-top: 0;
+}
+
+/* --- Responsive Design --- */
+/* 画面幅が992px以下の場合（タブレットやスマホ）はすべて縦積みに */
+@media (max-width: 992px) {
+  .top-row, .bottom-row {
+    flex-direction: column;
+    grid-template-columns: 1fr; /* グリッドを1列に */
+    gap: 1.5rem;
+  }
+
+  .camera-container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto; /* 中央揃え */
+  }
+}
